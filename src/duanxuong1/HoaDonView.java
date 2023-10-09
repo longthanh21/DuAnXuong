@@ -6,6 +6,7 @@ package duanxuong1;
 
 import duanxuong1.HoaDon;
 import duanxuong1.QuanLyHoaDon;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -26,7 +27,6 @@ public class HoaDonView extends javax.swing.JFrame {
         initComponents();
         ArrayList<HoaDon> list = quanLyHoaDon.getlistHoaDon();
         loadData(list);
-        System.out.println(list.size());
     }
     void loadData(ArrayList<HoaDon> list){
         defaultTableModel = (DefaultTableModel) tblHoaDon.getModel();
@@ -349,17 +349,17 @@ public class HoaDonView extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(tbnTaoHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(55, 55, 55)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGap(27, 27, 27)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jRadioButton1)
-                                    .addGap(18, 18, 18)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(jRadioButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(12, 12, 12)
+                                    .addGap(27, 27, 27)
                                     .addComponent(jRadioButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(3, 3, 3)))
                     .addComponent(jLabel8))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -459,10 +459,11 @@ public class HoaDonView extends javax.swing.JFrame {
             stt = i;
         }
         String HD = "HD";
-        
         HD = HD + stt;
-        
-        HoaDon hoaDon = new HoaDon(stt,HD,null,null,null);
+        String ngayTao = java.time.LocalDate.now().toString();
+        Integer tenNV = 1;
+        String trangThai = "Chưa thanh toán";
+        HoaDon hoaDon = new HoaDon(stt,HD,ngayTao,tenNV,trangThai);
         Boolean checkAdd = quanLyHoaDon.addNew(hoaDon);
         if(checkAdd){
             JOptionPane.showMessageDialog(this, "Thanh cong");
