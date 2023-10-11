@@ -23,12 +23,14 @@ public class HoaDonView extends javax.swing.JFrame {
     QuanLyHoaDon quanLyHoaDon = new QuanLyHoaDon();
     DefaultTableModel defaultTableModel;
     ArrayList<HoaDon> list = quanLyHoaDon.getlistHoaDon();
+
     public HoaDonView() {
         initComponents();
         ArrayList<HoaDon> list = quanLyHoaDon.getlistHoaDon();
         loadData(list);
     }
-    void loadData(ArrayList<HoaDon> list){
+
+    void loadData(ArrayList<HoaDon> list) {
         defaultTableModel = (DefaultTableModel) tblHoaDon.getModel();
         defaultTableModel.setRowCount(0);
         for (HoaDon hoaDon : list) {
@@ -41,6 +43,7 @@ public class HoaDonView extends javax.swing.JFrame {
             });
         }
     }
+
     //00000000000000000000000
     /**
      * This method is called from within the constructor to initialize the form.
@@ -471,31 +474,31 @@ public class HoaDonView extends javax.swing.JFrame {
         txtNgayTao.setText(ngayTao);
         Integer tenNV = (Integer) tblHoaDon.getValueAt(i, 3);
         txtTenNV.setText(tenNV.toString());
-        
+
     }//GEN-LAST:event_tblHoaDonMouseClicked
 
     private void tbnTaoHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbnTaoHoaDonMouseClicked
         // TODO add your handling code here:
         Integer stt = 0;
-        stt=list.size()+1;
+        stt = list.size() + 1;
         String HD = "HD";
         HD = HD + stt;
         String ngayTao = java.time.LocalDate.now().toString();
         Integer tenNV = 1;
-        String trangThai = "Chua thanh toan";
-        HoaDon hoaDon = new HoaDon(stt,HD,ngayTao,tenNV,trangThai);
+        String trangThai = "Chưa thanh toán";
+        HoaDon hoaDon = new HoaDon(stt, HD, ngayTao, tenNV, trangThai);
         Boolean checkAdd = quanLyHoaDon.addNew(hoaDon);
-        if(checkAdd){
-            JOptionPane.showMessageDialog(this, "Thanh cong");
+        if (checkAdd) {
+            JOptionPane.showMessageDialog(this, "Thành công");
             loadData(list);
         }
     }//GEN-LAST:event_tbnTaoHoaDonMouseClicked
 
     private void rdChoThanhToanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdChoThanhToanMouseClicked
         // TODO add your handling code here:
-        String click="Chua thanh toan";
-        ArrayList<HoaDon>ketQuaClick=quanLyHoaDon.chon(click);
-        loadData(ketQuaClick);
+        String check = "Chưa thanh toán";
+        ArrayList<HoaDon> ketQuaCheck = quanLyHoaDon.chon(check);
+        loadData(ketQuaCheck);
     }//GEN-LAST:event_rdChoThanhToanMouseClicked
 
     private void rdTatCaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdTatCaMouseClicked
@@ -505,16 +508,16 @@ public class HoaDonView extends javax.swing.JFrame {
 
     private void rdDaHuyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdDaHuyMouseClicked
         // TODO add your handling code here:
-        String click="Huy";
-        ArrayList<HoaDon>ketQuaClick=quanLyHoaDon.chon(click);
-        loadData(ketQuaClick);
+        String check = "Đã hủy";
+        ArrayList<HoaDon> ketQuaCheck = quanLyHoaDon.chon(check);
+        loadData(ketQuaCheck);
     }//GEN-LAST:event_rdDaHuyMouseClicked
 
     private void rdDaThanhToanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdDaThanhToanMouseClicked
         // TODO add your handling code here:
-         String click="Da thanh toan";
-        ArrayList<HoaDon>ketQuaClick=quanLyHoaDon.chon(click);
-        loadData(ketQuaClick);
+        String check = "Đã thanh toán";
+        ArrayList<HoaDon> ketQuaCheck = quanLyHoaDon.chon(check);
+        loadData(ketQuaCheck);
     }//GEN-LAST:event_rdDaThanhToanMouseClicked
 
     /**
