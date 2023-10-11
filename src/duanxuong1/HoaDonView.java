@@ -455,9 +455,7 @@ public class HoaDonView extends javax.swing.JFrame {
     private void tbnTaoHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbnTaoHoaDonMouseClicked
         // TODO add your handling code here:
         Integer stt = 0;
-        for (int i = 0; i <= list.size() + 1 ; i++) {
-            stt = i;
-        }
+        stt=list.size()+1;
         String HD = "HD";
         HD = HD + stt;
         String ngayTao = java.time.LocalDate.now().toString();
