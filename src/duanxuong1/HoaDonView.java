@@ -29,7 +29,7 @@ public class HoaDonView extends javax.swing.JFrame {
         ArrayList<HoaDon> list = quanLyHoaDon.getlistHoaDon();
         loadData(list);
     }
-
+    //00000000000
     void loadData(ArrayList<HoaDon> list) {
         defaultTableModel = (DefaultTableModel) tblHoaDon.getModel();
         defaultTableModel.setRowCount(0);
@@ -492,6 +492,7 @@ public class HoaDonView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Thành công");
             loadData(list);
         }
+
     }//GEN-LAST:event_tbnTaoHoaDonMouseClicked
 
     private void rdChoThanhToanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdChoThanhToanMouseClicked
