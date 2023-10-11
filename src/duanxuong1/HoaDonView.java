@@ -51,11 +51,12 @@ public class HoaDonView extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         tbnTaoHoaDon = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        rdChoThanhToan = new javax.swing.JRadioButton();
+        rdTatCa = new javax.swing.JRadioButton();
+        rdDaHuy = new javax.swing.JRadioButton();
+        rdDaThanhToan = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblHoaDon = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -98,17 +99,37 @@ public class HoaDonView extends javax.swing.JFrame {
             }
         });
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Chờ thanh toán ");
+        buttonGroup1.add(rdChoThanhToan);
+        rdChoThanhToan.setText("Chờ thanh toán ");
+        rdChoThanhToan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rdChoThanhToanMouseClicked(evt);
+            }
+        });
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Tất cả");
+        buttonGroup1.add(rdTatCa);
+        rdTatCa.setText("Tất cả");
+        rdTatCa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rdTatCaMouseClicked(evt);
+            }
+        });
 
-        buttonGroup1.add(jRadioButton3);
-        jRadioButton3.setText("Đã hủy");
+        buttonGroup1.add(rdDaHuy);
+        rdDaHuy.setText("Đã hủy");
+        rdDaHuy.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rdDaHuyMouseClicked(evt);
+            }
+        });
 
-        buttonGroup1.add(jRadioButton4);
-        jRadioButton4.setText("Đã thanh toán");
+        buttonGroup1.add(rdDaThanhToan);
+        rdDaThanhToan.setText("Đã thanh toán");
+        rdDaThanhToan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rdDaThanhToanMouseClicked(evt);
+            }
+        });
 
         tblHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -352,13 +373,13 @@ public class HoaDonView extends javax.swing.JFrame {
                             .addGap(27, 27, 27)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jRadioButton1)
+                                    .addComponent(rdChoThanhToan)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(rdTatCa, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jRadioButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(rdDaHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(27, 27, 27)
-                                    .addComponent(jRadioButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(rdDaThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(3, 3, 3)))
                     .addComponent(jLabel8))
@@ -378,10 +399,10 @@ public class HoaDonView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton4)
+                    .addComponent(rdChoThanhToan)
+                    .addComponent(rdTatCa)
+                    .addComponent(rdDaHuy)
+                    .addComponent(rdDaThanhToan)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -460,7 +481,7 @@ public class HoaDonView extends javax.swing.JFrame {
         HD = HD + stt;
         String ngayTao = java.time.LocalDate.now().toString();
         Integer tenNV = 1;
-        String trangThai = "Chưa thanh toán";
+        String trangThai = "Chua thanh toan";
         HoaDon hoaDon = new HoaDon(stt,HD,ngayTao,tenNV,trangThai);
         Boolean checkAdd = quanLyHoaDon.addNew(hoaDon);
         if(checkAdd){
@@ -468,6 +489,32 @@ public class HoaDonView extends javax.swing.JFrame {
             loadData(list);
         }
     }//GEN-LAST:event_tbnTaoHoaDonMouseClicked
+
+    private void rdChoThanhToanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdChoThanhToanMouseClicked
+        // TODO add your handling code here:
+        String click="Chua thanh toan";
+        ArrayList<HoaDon>ketQuaClick=quanLyHoaDon.chon(click);
+        loadData(ketQuaClick);
+    }//GEN-LAST:event_rdChoThanhToanMouseClicked
+
+    private void rdTatCaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdTatCaMouseClicked
+        // TODO add your handling code here:
+        loadData(list);
+    }//GEN-LAST:event_rdTatCaMouseClicked
+
+    private void rdDaHuyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdDaHuyMouseClicked
+        // TODO add your handling code here:
+        String click="Huy";
+        ArrayList<HoaDon>ketQuaClick=quanLyHoaDon.chon(click);
+        loadData(ketQuaClick);
+    }//GEN-LAST:event_rdDaHuyMouseClicked
+
+    private void rdDaThanhToanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdDaThanhToanMouseClicked
+        // TODO add your handling code here:
+         String click="Da thanh toan";
+        ArrayList<HoaDon>ketQuaClick=quanLyHoaDon.chon(click);
+        loadData(ketQuaClick);
+    }//GEN-LAST:event_rdDaThanhToanMouseClicked
 
     /**
      * @param args the command line arguments
@@ -506,6 +553,7 @@ public class HoaDonView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -520,10 +568,6 @@ public class HoaDonView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -533,6 +577,10 @@ public class HoaDonView extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JRadioButton rdChoThanhToan;
+    private javax.swing.JRadioButton rdDaHuy;
+    private javax.swing.JRadioButton rdDaThanhToan;
+    private javax.swing.JRadioButton rdTatCa;
     private javax.swing.JTable tblHoaDon;
     private javax.swing.JButton tbnTaoHoaDon;
     private javax.swing.JTextField txtMaHD;

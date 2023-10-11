@@ -24,4 +24,13 @@ public class QuanLyHoaDon {
         listHoaDon.add(hoaDon);
         return true;
     }
+    ArrayList<HoaDon> chon( String click){
+        ArrayList<HoaDon> ketQuaChon=new ArrayList<>();
+        for (HoaDon hoaDon : listHoaDon) {
+            if (hoaDon.getTinhTrang().equals(click)) {
+                ketQuaChon.add(hoaDon);
+            }
+        }
+        return ketQuaChon;
+    }
 }
